@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .container,
+        .container1,
+        .container2,
+        .container3,
+        .container4 {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            display: none;
+            /* Ocultos por defecto */
+        }
+
+        .container:first-child {
+            display: block;
+            /* Mostrar el selector principal */
+        }
+
+        label {
+            font-weight: 500;
+            color: #34495e;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 6px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            width: 100%;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .row.mb-3 {
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-sm-12 col-md-12 text-center">
+            <h1>Example Horizontal Form Bootstrap</h1>
+            <form>
+                <div class="row mb-3">
+                    <label for="acciones" class="col-sm-2 col-form-label">Seleccione</label>
+                    <div class="col-sm-10">
+                        <select name="acciones" id="acciones" class="form-select">
+                            <option value="Organizacion">Organizacion</option>
+                            <option value="Departamentos">Departamentos</option>
+                            <option value="Empleados">Empleados</option>
+                            <option value="Sueldos">Sueldos</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
+            </form>
+        </div>
+    </div>
+
+    <!-- FORMULARIO DE ORGANIZACIONES (REGISTRO) -->
+    <div class="container1" id="container1">
+        <div class="col-sm-12 col-md-12 text-center">
+            <h1>Formulario Organizaciones</h1>
+            <!-- ESTABLECEMOS BACKEND DE ENVÍO -->
+            <form action="controlador/contolador_FormularioOrganizacion.php" method="POST" id="formulario-1">
+                <div class="row mb-3" style="margin-top: 50px;">
+                    <label for="nombre_organizacion">Nombre organizacion</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nombre_organizacion" id="nombre_organizacion" class="form-control">
+                    </div>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FORMULARIO DE DEPARTAMENTOS (REGISTRO) -->
+    <div class="container2" id="container2">
+        <div class="col-sm-12 col-md-12 text-center">
+            <h1>Formulario Departamentos</h1>
+            <!-- ESTABLECEMOS BACKEND DE ENVÍO -->
+            <form action="">
+                <div class="row mb-3" style="margin-top: 50px;">
+                    <label for="obtener_organizacion">Organización:</label>
+                    <select name="obtener_organizacion" id="obtener_organizacion" class="form-select">
+                    </select>
+                    <label for="nombre_departamento">Nombre departmento:</label>
+                    <input type="text" name="nombre_departamento" id="nombre_departamento" class="form-control">
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FORMULARIO DE EMPLEADOS (REGISTRO) -->
+    <div class="container3" id="container3">
+        <div class="col-sm-12 col-md-12 text-center">
+            <h1>Formulario Usuarios</h1>
+            <!-- ESTABLECEMOS BACKEND DE ENVÍO -->
+            <form action="">
+                <div class="row mb-3" style="margin-top: 50px;">
+                    <label for="obtener_departamentos">Departamentos:</label>
+                    <select name="obtener_departamentos" id="obtener_departamentos" class="form-select">
+                    </select>
+                    <label for="nombre_empleado">Nombre empleado</label>
+                    <input type="text" name="nombre_empleado" id="nombre_empleado" class="form-control">
+                </div>
+                <button type="submit">Enviar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- FORMULARIO DE SUELDOS (REGISTRO) -->
+    <div class="container4" id="container4">
+        <div class="col-sm-12 col-md-12 text-center">
+            <h1>Formulario Sueldos</h1>
+            <!-- ESTABLECEMOS BACKEND DE ENVÍO -->
+            <form action="">
+                <div class="row mb-3" style="margin-top: 50px;">
+                    <label for="obtener_departamentos_s">Departamentos:</label>
+                    <select name="obtener_departamentos_s" id="obtener_departamentos_s" class="form-select">
+                    </select>
+                    <label for="nombre_empleado">Valor hora:</label>
+                    <input type="number" name="valor_hora" id="valor_hora" class="form-control">
+                </div>
+                <button type="submit">Enviar</button>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const acciones = document.getElementById('acciones');
+        acciones.addEventListener('change', function (e) {
+            // Contenedores de formularios
+            const contenedor1 = document.getElementById('container1');
+            const contenedor2 = document.getElementById('container2');
+            const contenedor3 = document.getElementById('container3');
+            const contenedor4 = document.getElementById('container4');
+
+            // Mostra contenedor de acuerdo a su value
+            if (acciones.value == 'Organizacion') {
+                contenedor1.style.display = "block";
+            } else {
+                contenedor1.style.display = "none";
+            }
+
+            if (acciones.value == 'Departamentos') {
+                contenedor2.style.display = "block";
+            } else {
+                contenedor2.style.display = "none";
+            }
+
+            if (acciones.value == 'Empleados') {
+                contenedor3.style.display = "block";
+            } else {
+                contenedor3.style.display = "none";
+            }
+
+            if (acciones.value == 'Sueldos') {
+                contenedor4.style.display = "block";
+            } else {
+                contenedor4.style.display = "none";
+            }
+
+            // Desarrollar funciones con fetch para llenar selects
+
+
+            // Uso no permitido dentro del archivo de cualquier lenguaje servidor (obigatorio)
+        });
+    </script>
+</body>
+
+</html>
