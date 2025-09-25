@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Sitio WEB</h1>
+    <!-- Lista de componentes computador -->
+    <button type="button" class="btn-cargar">Cargar mi lista</button>
+    <button type="button" class="btn-quitar">Eliminar elementos de lista</button>
+    <input type="text" id="elemento-delete" placeholder="Escribe el elemento a eliminar">
+    <span class="error" id="error-elemento"></span>
+    <ul>
+    </ul>
+    <script>
+        // Definir el botón y el evento click
+        const btn = document.querySelector('.btn-cargar')
+        const btnEliminar = document.querySelector('.btn-quitar')
+
+        btnEliminar.addEventListener('click', function () {
+            // Declaración de variables
+            const inputElement = document.getElementById('elemento-delete').value.trim();
+            let patronTexto = /^[A-Za-z]+$/; // Solo letras mayúsculas y minúsculas
+            let validar = true;
+
+            // Array principal con valores y referencias
+            let campos = [
+                {
+                    nombre: 'elemento a eliminar',
+                    validaciones: [
+                        {
+                            // Nueva referencia para accesos específicos (tipo, valor almacenado, errores)
+                            required: true,
+                            valor: document.getElementById('elemento-delete').value.trim(),
+                            // Uso de error para mejor manipulación (dinámica) de los campos a partir de su ID
+                            error: 'error-elemento',
+                            tipo: 'texto',
+                            ejemplo: 'Valores permitidos: Ej: Palabras en mayúsculas y minúsculas'
+                        }
+                    ]
+                }
+            ];
+
+            // Acceder a los valores del primer array
+            campos.forEach(camp => {
+                // Acceder a los valores del segundo array (clave)
+                camp.validaciones.forEach(validacion => {
+                    // Declarción de elemento HTML para mostrar mensajes
+                    const spanError = document.getElementById(validacion.error);
+
+                    // Validaciones
+                    if (validacion.required && !validacion.valor) {
+                        spanError.innerHTML = `Atención se encuentra vacio el campo ${camp.nombre}`;
+                        validar = false;
+                    } else if (validacion.tipo == 'texto' && !patronTexto.test(validacion.valor)) {
+                        spanError.innerHTML = `Atención el valor ingresado no coincide con el esperado ${validacion.ejemplo}`;
+                        validar = false;
+                    } else {
+                        // Limpiamos errores para envío
+                        spanError.innerHTML = '';
+                    }
+                });
+            });
+
+            if (validar) {
+                // Declaración del array
+                let miArrayDeValores = [];
+
+                // 3. Añade el valor al array usando push()
+                miArrayDeValores.push(inputElement);
+
+                // Opcional: Limpia el input después de agregar el valor
+                inputElement.value = '';
+
+                // Opcional: Muestra el array en la consola para verificar
+                console.log(miArrayDeValores);
+
+                // Definir una variable que contenga la lista
+                const lista = document.querySelector('ul');
+
+                // Array de elementos a iterar y mostrar
+
+                // Recorrido de array para agregado automático
+                for (let i = 0; i < miArrayDeValores.length; i++) {
+                    // Elemento de tipo lista creado por cada item del arrray
+                    const element = document.createElement('li');
+                    // Sobreescribir el contenido del elemento
+                    element.textContent = miArrayDeValores[i];
+                    // Agregar el elemento a la lista (un hijo)
+                    lista.appendChild(element)
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>
